@@ -13,9 +13,9 @@ IMX_RELEASE="imx-5.15.32-2.0.0"
 
 YOCTO_DIR="${DOCKER_WORKDIR}/${IMX_RELEASE}-build"
 
-MACHINE="imx8mpevk"
-DISTRO="fsl-imx-xwayland"
-IMAGES="imx-image-core"
+MACHINE="imx6zebra"
+DISTRO="fsl-imx-wayland"
+IMAGES="imx-image-multimedia"
 
 REMOTE="https://source.codeaurora.org/external/imx/imx-manifest"
 BRANCH="imx-linux-kirkstone"

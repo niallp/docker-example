@@ -5,11 +5,21 @@ FROM ubuntu:18.04
 # for a default confirmation [Y/n] at some configurations.
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt update
-RUN apt install -y gawk wget git-core diffstat unzip texinfo \
-    gcc-multilib build-essential chrpath socat cpio python python3 \
-    python3-pip python3-pexpect xz-utils debianutils iputils-ping \
-    libsdl1.2-dev xterm tar locales net-tools rsync sudo vim curl
+
+RUN apt -y update && apt install -y manpages-dev
+
+RUN apt -y update && apt install -y openssh-client
+
+RUN apt -y update && apt install -y libisl19
+
+RUN apt -y update && apt install -y device-tree-compiler
+
+RUN apt -y install libdbus-glib-1-dev
+
+RUN apt -y update --fix-missing && apt install -y --fix-missing gawk wget git-core diffstat unzip texinfo \
+    gcc-multilib build-essential chrpath socat cpio python python3 libegl1-mesa \
+    python3-pip python3-pexpect python3-git python3-jinja2 xz-utils debianutils iputils-ping \
+    libsdl1.2-dev xterm tar locales net-tools rsync sudo vim curl liblz4-tool zstd pylint3
 
 # Set up locales
 RUN locale-gen en_US.UTF-8 && \

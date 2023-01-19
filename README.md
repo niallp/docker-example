@@ -1,3 +1,18 @@
+DISCLAIMER: This Docker example is based off of NXP's Docker example. Original repository is here:
+https://github.com/nxp-imx/imx-docker
+
+[VersaLogic Info:: If you have already setup docker on your workstation and have it functioning
+ then you should be safe to skip down to "Build i.MX with Docker". 
+Otherwise it is highly recommended to at least review all steps below and possibly the docker
+tutorials on docker.com. Docker is very dependent on open network ports and group permissions.
+
+VersaLogic has found that even with a good proper environment that the scripts are not always 
+very stable. This is to be expected as even when they are run the bash script
+will warn about using 'apt'. Of course these scripts themselves only build example
+Embedded Linux images via the Yocto Project build system and in the end it is recommended to
+use the Docker images downloaded by docker to go in and modify the Yocto recipes and layers as
+seen fit for the end product.]
+
 
 This setup helps to build i.MX BSP in an isolated environment with docker.
 
@@ -72,8 +87,8 @@ Build i.MX with docker
 ├── README.md
 ├── docker-build.sh
 ├── docker-run.sh
-├── env.sh -> imx-5.10.35-2.0.0/env.sh
-└── imx-5.10.35-2.0.0
+├── env.sh -> imx-5.15.32-2.0.0/env.sh
+└── imx-5.15.32-2.0.0
     ├── env.sh
     └── yocto-build.sh
 ```
@@ -100,7 +115,7 @@ Build the yocto imx-image in a docker container
 ```{.sh}
   $ ./docker-run.sh ${IMX_RELEASE}/yocto-build.sh
 
-  i.e IMX_RELEASE=imx-5.10.35-2.0.0
+  i.e IMX_RELEASE=imx-5.15.32-2.0.0
 ```
 
 or just go to the docker container prompt (and run the build script from there):

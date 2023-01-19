@@ -19,9 +19,24 @@ repo init \
 
 repo sync -j`nproc`
 
+# add meta-versalogic layer
+cd sources
+
+git clone https://github.com/versalogic/meta-versalogic -b kirkstone
+
 # source the yocto env
 
+cd ..
+
 EULA=1 MACHINE="${MACHINE}" DISTRO="${DISTRO}" source imx-setup-release.sh -b build_${DISTRO}
+
+# include meta-versalogic layer in bitbake
+
+cd conf
+
+echo 'BBLAYERS += "${BSPDIR}/sources/meta-versalogic"' >> bblayers.conf
+
+cd ../..
 
 # Build
 

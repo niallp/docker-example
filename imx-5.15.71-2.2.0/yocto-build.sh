@@ -3,7 +3,7 @@
 
 # source the common variables
 
-. imx-5.15.32-2.0.0/env.sh
+. imx-5.15.71-2.2.0/env.sh
 
 #
 

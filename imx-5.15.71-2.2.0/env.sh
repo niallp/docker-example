@@ -5,18 +5,18 @@
 # Docker
 
 DOCKER_IMAGE_TAG="imx-yocto"
-DOCKER_WORKDIR="/opt/yocto"
+DOCKER_WORKDIR="/datadrive/swordtail/yocto-docker"
 
 # Yocto
 
-IMX_RELEASE="imx-5.15.32-2.0.0"
+IMX_RELEASE="imx-5.15.71-2.2.0"
 
 YOCTO_DIR="${DOCKER_WORKDIR}/${IMX_RELEASE}-build"
 
-MACHINE="imx6zebra"
-DISTRO="fsl-imx-wayland"
-IMAGES="imx-image-multimedia"
+MACHINE="imx6swordtail"
+DISTRO="fsl-imx-fb"
+IMAGES="imx-image-core"
 
-REMOTE="https://source.codeaurora.org/external/imx/imx-manifest"
+REMOTE="https://github.com/nxp-imx/imx-manifest"
 BRANCH="imx-linux-kirkstone"
 MANIFEST=${IMX_RELEASE}".xml"

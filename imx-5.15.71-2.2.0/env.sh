@@ -15,7 +15,7 @@ YOCTO_DIR="${DOCKER_WORKDIR}/${IMX_RELEASE}-build"
 
 MACHINE="imx6swordtail"
 DISTRO="fsl-imx-fb"
-IMAGES="imx-image-core"
+IMAGES="poseidon-image-fp"
 
 REMOTE="https://github.com/nxp-imx/imx-manifest"
 BRANCH="imx-linux-kirkstone"

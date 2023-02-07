@@ -24,6 +24,9 @@ cd sources
 
 git clone https://github.com/versalogic/meta-versalogic -b kirkstone
 
+# for poseidon layers
+git clone git@ssh.dev.azure.com:v3/PoseidonDev/FlowPressor/G3Kernel meta-poseidon -b dev/niall/swordtail
+
 # source the yocto env
 
 cd ..
@@ -35,6 +38,7 @@ EULA=1 MACHINE="${MACHINE}" DISTRO="${DISTRO}" source imx-setup-release.sh -b bu
 cd conf
 
 echo 'BBLAYERS += "${BSPDIR}/sources/meta-versalogic"' >> bblayers.conf
+echo 'BBLAYERS += "${BSPDIR}/sources/meta-poseidon"' >> bblayers.conf
 
 cd ../..
 

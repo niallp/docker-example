@@ -22,10 +22,22 @@ repo sync -j`nproc`
 # add meta-versalogic layer
 cd sources
 
-git clone https://github.com/versalogic/meta-versalogic -b kirkstone
+if [ -d meta-versalogic ]; then
+	cd meta-versalogic
+	git pull
+	cd ..
+else
+	git clone https://github.com/versalogic/meta-versalogic -b kirkstone
+fi
 
 # for poseidon layers
-git clone git@ssh.dev.azure.com:v3/PoseidonDev/FlowPressor/G3Kernel meta-poseidon -b dev/niall/swordtail
+if [ -d meta-poseidon ]; then
+	cd meta-poseidon
+	git pull
+	cd ..
+else
+	git clone git@ssh.dev.azure.com:v3/PoseidonDev/FlowPressor/G3Kernel meta-poseidon -b dev/niall/swordtail
+fi
 
 # source the yocto env
 

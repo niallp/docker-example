@@ -22,6 +22,14 @@ repo sync -j`nproc`
 # add meta-versalogic layer
 cd sources
 
+if [ -d meta-mender ]; then
+	cd meta-mender
+	git fetch
+	cd ..
+else
+	git clone --single-branch https://github.com/versalogic/meta-versalogic -b kirkstone-v2022.10
+fi
+
 if [ -d meta-versalogic ]; then
 	cd meta-versalogic
 	git pull
@@ -49,6 +57,7 @@ EULA=1 MACHINE="${MACHINE}" DISTRO="${DISTRO}" source imx-setup-release.sh -b bu
 
 cd conf
 
+echo 'BBLAYERS += "${BSPDIR}/sources/meta-mender/meta-mender-core"' >> bblayers.conf
 echo 'BBLAYERS += "${BSPDIR}/sources/meta-versalogic"' >> bblayers.conf
 echo 'BBLAYERS += "${BSPDIR}/sources/meta-poseidon"' >> bblayers.conf
 

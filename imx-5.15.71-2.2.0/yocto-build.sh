@@ -27,7 +27,7 @@ if [ -d meta-mender ]; then
 	git fetch
 	cd ..
 else
-	git clone --single-branch https://github.com/versalogic/meta-versalogic -b kirkstone-v2022.10
+	git clone --single-branch https://github.com/mendersoftware/meta-mender.git -b kirkstone-v2022.10
 fi
 
 if [ -d meta-versalogic ]; then

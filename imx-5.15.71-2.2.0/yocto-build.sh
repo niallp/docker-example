@@ -30,6 +30,14 @@ else
 	git clone --single-branch https://github.com/mendersoftware/meta-mender.git -b kirkstone-v2022.10
 fi
 
+if [ -d meta-qt5 ]; then
+	cd meta-qt5
+	git pull
+	cd ..
+else
+	git clone https://github.com/meta-qt5/meta-qt5 -b kirkstone
+fi
+
 if [ -d meta-versalogic ]; then
 	cd meta-versalogic
 	git pull
@@ -58,6 +66,7 @@ EULA=1 MACHINE="${MACHINE}" DISTRO="${DISTRO}" source imx-setup-release.sh -b bu
 cd conf
 
 echo 'BBLAYERS += "${BSPDIR}/sources/meta-mender/meta-mender-core"' >> bblayers.conf
+echo 'BBLAYERS += "${BSPDIR}/sources/meta-qt5"' >> bblayers.conf
 echo 'BBLAYERS += "${BSPDIR}/sources/meta-versalogic"' >> bblayers.conf
 echo 'BBLAYERS += "${BSPDIR}/sources/meta-poseidon"' >> bblayers.conf
 

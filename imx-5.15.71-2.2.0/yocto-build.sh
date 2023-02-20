@@ -65,6 +65,11 @@ EULA=1 MACHINE="${MACHINE}" DISTRO="${DISTRO}" source imx-setup-release.sh -b bu
 
 cd conf
 
+# remove meta-qt6, will use meta-qt5 instead
+
+sed -i.bak '/meta-qt6/d' bblayers.conf
+sed -i.bak '/meta-nxp-demo-experience/d' bblayers.conf
+
 echo 'BBLAYERS += "${BSPDIR}/sources/meta-mender/meta-mender-core"' >> bblayers.conf
 echo 'BBLAYERS += "${BSPDIR}/sources/meta-qt5"' >> bblayers.conf
 echo 'BBLAYERS += "${BSPDIR}/sources/meta-versalogic"' >> bblayers.conf

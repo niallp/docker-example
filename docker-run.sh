@@ -28,6 +28,7 @@
 docker run -it --rm \
     --volume ${HOME}:${HOME} \
     --volume ${DOCKER_WORKDIR}:${DOCKER_WORKDIR} \
+    --volume /datadrive/MCUDevelopment:/datadrive/MCUDevelopment \
     --volume $(pwd)/${IMX_RELEASE}:${DOCKER_WORKDIR}/${IMX_RELEASE} \
     "${DOCKER_IMAGE_TAG}" \
     $1

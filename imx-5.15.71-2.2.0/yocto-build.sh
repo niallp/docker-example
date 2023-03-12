@@ -52,7 +52,7 @@ if [ -d meta-poseidon ]; then
 	git pull
 	cd ..
 else
-	git clone git@ssh.dev.azure.com:v3/PoseidonDev/FlowPressor/G3Kernel meta-poseidon -b dev/niall/swordtail
+	git clone git@ssh.dev.azure.com:v3/PoseidonDev/FlowPressor/G3Kernel meta-poseidon -b dev/kirkstone
 fi
 
 # source the yocto env

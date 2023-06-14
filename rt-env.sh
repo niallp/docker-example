@@ -10,7 +10,8 @@ DOCKER_WORKDIR="/datadrive/rt-yocto-docker"
 # Yocto
 
 YOCTO_DIR="${DOCKER_WORKDIR}/rt-yocto-setup"
+YOCTO_DL_DIR="${DOCKER_WORKDIR}/yocto=files-dunfell"
 
-MACHINE="pos-fp-swordtail"
-DISTRO="poseidon-fp"
-IMAGES="poseidon-image-fp"
+MACHINE="swordtail"
+DISTRO="poseidon"
+IMAGES="flowpressor"

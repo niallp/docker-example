@@ -131,4 +131,46 @@ When running, volumes are used to save the build artifacts on host.
   - `{HOME}` to mount the current home user, to make available the user 
     settings inside the container (ssh keys, git config, etc)
 
+Build using RT script (Yocto Dunfell) : for POS Flowpressor
+=====================================
+
+To build container for building g3 and swordtail images using the Reach Technologies:
+
+```{.sh}
+  $ ./rt-docker-build.sh Dockerfile-rt-yocto
+```
+
+This docker image is setup to use host volumes for persistent code and build artifacts. This can be initially populated from host or within container:
+
+```{.sh}
+source rt-env.sh
+mkdir -p $YOCTO_DL_DIR
+cd $DOCKER_WORKDIR
+git clone --depth 1 --branch FSL-QT5-1.1.1 git@github.com:jmore-reachtech/rt-yocto-setup.git
+cd $YOCTO_DIR
+./setup.sh fsl $YOCTO_DL_DIR
+cd sources
+git clone git@ssh.dev.azure.com:v3/PoseidonDev/FlowPressor/KernelRecipes meta-poseidon
+cd ../build/conf
+echo 'BBLAYERS += "${BSPDIR}/sources/meta-poseidon"' >> bblayers.conf
+cd ../..
+```
+
+To run container:
+
+```{.sh}
+./rt-docker-run.sh
+```
+
+Example of swordtail image build (within docker container)
+
+```{.sh}
+cd rt-yocto-setup
+source sources/poky/oe-init-build-env
+MACHINE=swordtail bitbake flowpressor
+```
+
+Completed build artifacts are stored in image directory. For the example above /datadrive/rt-yocto-docker/rt-yocto-setup/build/tmp/deploy/images/swordtail ... the file usually downloaded and copied to uSD card is flowpressor-swordtail.sdimg.bz2 which is a link to latest build.
+
+
 [docker]: https://docs.docker.com/engine/install/ubuntu/ "DockerInstall/Ubuntu"
